@@ -13,11 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("login", "Auth\LoginController@showLoginForm");
+Route::post("login", "Auth\LoginController@login")->name("login");
+
+
+//logout
+Route::post("logout", "Auth\LoginController@logout")->name("logout");
 
 Route::get('/', function(){
-    return view('layout.app');
+    return view('layouts.admin');
 });
 
 // Route::get('pdf', 'startController@pdf');
 
 Route::get('siswa/export/', 'startController@export');
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
