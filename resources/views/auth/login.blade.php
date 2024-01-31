@@ -11,7 +11,7 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="username" class="form-control @error('username')
+                    <input type="username" name="username" class="form-control @error('username')
                         is-invalid
                     @enderror" placeholder="username">
                         <div class="input-group-append">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control @error('password')
+                        <input type="password" name="password" class="form-control @error('password')
                             is-invalid
                         @enderror" placeholder="Password">
                             <div class="input-group-append">

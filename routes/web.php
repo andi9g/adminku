@@ -17,8 +17,17 @@ Route::get("login", "Auth\LoginController@showLoginForm");
 Route::post("login", "Auth\LoginController@login")->name("login");
 
 
-//logout
-Route::post("logout", "Auth\LoginController@logout")->name("logout");
+Route::middleware(['auth'])->group(function () {
+    //logout
+    Route::post("logout", "Auth\LoginController@logout")->name("logout");
+    //profil
+    Route::get('profil', "profilC@index");
+    Route::post('profil/ubahnama', "profilC@ubahnama")->name("ubah.nama");
+    Route::post('profil/ubahpassword', "profilC@ubahpassword")->name("ubah.password");
+    Route::post('profil/ubahgambar', "profilC@ubahgambar")->name("ubah.gambar");
+
+    
+});
 
 Route::get('/', function(){
     return view('layouts.admin');
@@ -30,4 +39,4 @@ Route::get('siswa/export/', 'startController@export');
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
